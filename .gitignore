@@ -1,6 +1,7 @@
-bower_components/
-node_modules/
-/build/
-Thumbs.db
-*.log
-*.tmp
+node_modules
+app/assets/vendor
+dist/
+build/
+.tmp
+app.yaml
+.npmrc
