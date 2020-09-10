@@ -1,0 +1,30 @@
+{
+  "name": "joinus-frontend",
+  "version": "1.5.0",
+  "authors": [
+    "gwc0721 <gwc0721@qq.com>"
+  ],
+  "description": "JoinUs's main page of Token Team",
+  "main": "welcome.tpl.html",
+  "moduleType": [],
+  "keywords": [
+    "joinus"
+  ],
+  "license": "MIT",
+  "private": true,
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "_resourcess",
+    "build",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fullpage.js": "~2.7.3",
+    "jquery": "1",
+    "normalize-css": "normalize.css#~3.0.3"
+  }
+}

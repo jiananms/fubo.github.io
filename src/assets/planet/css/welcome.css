@@ -1,0 +1,309 @@
+@font-face {
+    font-family: 'Lithos Pro';
+    src: url('../fonts/LithosPro-Regular.eot'); /* IE9 */
+    src: url('../fonts/LithosPro-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/LithosPro-Regular.woff') format('woff'), /* Chrome, Firefox */
+    url('../fonts/LithosPro-Regular.ttf') format('truetype'), /* Chrome, Firefox, Opera, Safari, Android, iOS 4.2+ */
+    url('../fonts/LithosPro-Regular.svg#LithosPro-Regular') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: 'RTWSShangGoG0v1';
+    src: url('../fonts/RTWSShangGoG0v1-Regular.eot'); /* IE9 */
+    src: url('../fonts/RTWSShangGoG0v1-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/RTWSShangGoG0v1-Regular.woff') format('woff'), /* Chrome, Firefox */
+    url('../fonts/RTWSShangGoG0v1-Regular.ttf') format('truetype'), /* Chrome, Firefox, Opera, Safari, Android, iOS 4.2+ */
+    url('../fonts/RTWSShangGoG0v1-Regular.svg#RTWSShangGoG0v1-Regular') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: 'MFLiHei';
+    src: url('../fonts/MFLiHei_Noncommercial-Regular.eot'); /* IE9 */
+    src: url('../fonts/MFLiHei_Noncommercial-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/MFLiHei_Noncommercial-Regular.woff') format('woff'), /* Chrome, Firefox */
+    url('../fonts/MFLiHei_Noncommercial-Regular.ttf') format('truetype'), /* Chrome, Firefox, Opera, Safari, Android, iOS 4.2+ */
+    url('../fonts/MFLiHei_Noncommercial-Regular.svg#MFLiHei_Noncommercial-Regular') format('svg'); /* iOS 4.1- */
+}
+
+body {
+    font-family: "Segoe UI", "Open Sans", "Lucida Grande", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei Light", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+    background: #10061e;
+    color: #c0c7c7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+
+/**
+ * 背景层
+ */
+.bg-layer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    z-index: -100;
+    overflow: hidden;
+}
+.bg-layer.starsbg {
+    background: transparent url("../images/stars.png") repeat top center;
+}
+.bg-layer.twinkling {
+    background: transparent url("../images/twinkling.png") repeat top center;
+    animation: move-twink-back 6s linear infinite;
+    width: 150%;
+    height: 150%;
+    max-height: 150%;
+}
+@media(max-width: 768px) {
+    .bg-layer.twinkling {
+        display: none;
+        visibility: hidden;
+    }
+}
+.bg-layer.nebulae {
+    background: transparent url("../images/nebulae.png") no-repeat center center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+@media(max-width: 768px) {
+    .bg-layer.nebulae {
+        display: none;
+        visibility: hidden;
+    }
+}
+.bg-layer.stars::before {
+    content: "";
+    background: transparent url("../images/stars.png");
+    position: absolute;
+    width: 142vw;
+    height: 142vw;
+    top: -21vw;
+    left: -21vw;
+    animation: rotating 360s infinite linear;
+    animation-direction: reverse;
+}
+@media(max-width: 768px) {
+    .bg-layer.stars, .bg-layer.stars::before {
+        display: none;
+        visibility: hidden;
+    }
+}
+.fp-viewing-main .bg-layer.nebulae {
+    opacity: 1;
+}
+
+.page-title {
+    font-family: "Lithos Pro";
+    font-size: 64px;
+    font-weight: normal;
+    color: #c9c9c9;
+    text-align: center;
+    margin: 8px 0 0;
+    text-transform: uppercase;
+}
+
+.planet-group {
+    width: 570px;
+    height: 570px;
+    margin: 0 auto 0;
+    position: relative;
+    overflow: hidden;
+}
+.planet-group .planet {
+    width: 430px;
+    height: 430px;
+    margin-top: 70px;
+    margin-left: 70px;
+    z-index: 180;
+}
+.planet-group div.planet {
+    background: transparent url("../images/planet.png") no-repeat;
+}
+.planet-group > img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+.planet-group > canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+}
+
+area {
+    outline: 0;
+    outline-style: none;
+    border-style: none;
+}
+
+/**
+ * 气泡
+ */
+.bubble {
+    position: relative;
+}
+.bubble::after {
+    position: absolute;
+    width: 72px;
+    height: 76px;
+    z-index: 1000;
+    display: none;
+    font-size: 1.65rem;
+    font-family: "RTWSShangGoG0v1";
+    line-height: 72px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: break-word;
+    white-space: pre;
+    pointer-events: none;
+    content: attr(aria-label);
+    background: url("../images/bubble.png") no-repeat center center;
+    -webkit-font-smoothing: subpixel-antialiased;
+    right: 50%;
+    bottom: 100%;
+    margin-bottom: 5px;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+    transition: all .3s ease;
+    display: inline-block;
+    margin-bottom: -15px;
+    opacity: 0;
+}
+.bubble:hover::after,
+.bubble:active::after,
+.bubble:focus::after,
+.bubble-active::after,
+.bubble-sticky::after {
+    display: inline-block;
+    margin-bottom: 5px;
+    opacity: 1;
+    text-decoration: none;
+}
+.bubble-disabled::after {
+    opacity: 0 !important;
+}
+@media(max-width: 768px) {
+    .bubble::after {
+        display: inline-block;
+        margin-bottom: 5px;
+        opacity: 1;
+        text-decoration: none;
+    }
+}
+
+map .bubble.photography::after {
+    right: 360px;
+    bottom: 340px;
+}
+map .bubble.content::after {
+    right: 170px;
+    bottom: 400px;
+}
+map .bubble.design::after {
+    right: 20px;
+    bottom: 260px;
+}
+map .bubble.operation::after {
+    right: 200px;
+    bottom: 230px;
+}
+map .bubble.technology::after {
+    right: 40px;
+    bottom: 136px;
+}
+map .bubble.product::after {
+    right: 110px;
+    bottom: 50px;
+}
+map .bubble.hr::after {
+    right: 320px;
+    bottom: 150px;
+}
+
+.bubble-fallback-container, .bubble-fallback, .bubble-fallback > .bubble {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    z-index: 200;
+    pointer-events: none;
+}
+.bubble-fallback-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.bubble-fallback-container.hidden, .bubble-fallback.hidden {
+    display: none;
+}
+.bubble-fallback {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.bubble-fallback > .bubble {
+    position: absolute;
+    z-index: 300;
+}
+.bubble-fallback > .bubble.photography {
+    left: 140px;
+    top: 150px;
+}
+.bubble-fallback > .bubble.content {
+    left: 330px;
+    top: 100px;
+}
+.bubble-fallback > .bubble.design {
+    left: 470px;
+    top: 240px;
+}
+.bubble-fallback > .bubble.operation {
+    left: 310px;
+    top: 270px;
+}
+.bubble-fallback > .bubble.technology {
+    left: 470px;
+    top: 350px;
+}
+.bubble-fallback > .bubble.product {
+    left: 390px;
+    top: 450px;
+}
+.bubble-fallback > .bubble.hr {
+    left: 180px;
+    top: 350px;
+}
+
+/**
+ * 动画关键帧
+ */
+@keyframes rotating {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes orbit-animation {
+    0% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 20; }
+}
+@keyframes move-twink-back {
+    from { transform: translate(0, -100px); }
+    to { transform: translate(-200px, 0); }
+}

@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "MF ShangHei (Noncommercial) Reg";
+    src: url("RTWSShangGoG0v1-Regular.eot"); /* IE9 */
+    src: url("RTWSShangGoG0v1-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("RTWSShangGoG0v1-Regular.woff") format("woff"), /* chrome, firefox */
+    url("RTWSShangGoG0v1-Regular.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("RTWSShangGoG0v1-Regular.svg#MF ShangHei (Noncommercial) Reg") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
